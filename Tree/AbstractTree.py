@@ -1,5 +1,5 @@
 class Tree:
-    class Postion:
+    class Position:
         def element(self):
             raise NotImplementedError("must be implemented by subclass")
 
