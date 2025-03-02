@@ -1,5 +1,11 @@
-from LinkedBinaryTree import LinkedBinaryTree
+from collections import deque
 
-bt = LinkedBinaryTree()
-root_p = bt.add_root(1)
-bt.add_left(root_p, 2)
+stack = deque()
+
+for i in range(10):
+    print(f"insert {i}")
+    stack.append(i)
+
+
+for i in range(10):
+    print(stack.popleft())
