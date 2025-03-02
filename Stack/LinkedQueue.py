@@ -1,9 +1,12 @@
 # 队列
 
 
+from Stack.Node import NodeBase
+
+
 class LinkedQueue:
-    class Node:
-        def __init__(self, e, next) -> None:
+    class Node(NodeBase):
+        def __init__(self, e, next: NodeBase) -> None:
             self.element = e
             self.next = next
 
@@ -23,3 +26,22 @@ class LinkedQueue:
             raise ValueError("queue is empty")
 
         return self.head.element
+
+    def dequeue(self):
+        if self.is_empty():
+            raise ValueError("queue is empty")
+        res = self.head.element
+        self.head = self.head.next
+        self.size -= 1
+        if self.is_empty():
+            self.tail = None
+        return res
+
+    def enqueue(self, e):
+        nd = self.Node(e, None)
+        if self.is_empty():
+            self.head = nd
+        else:
+            self.tail.next = nd
+        self.tail = nd
+        self.size += 1
