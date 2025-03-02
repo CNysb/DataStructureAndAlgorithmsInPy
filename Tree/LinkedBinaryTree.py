@@ -1,4 +1,4 @@
-from Tree.BinaryTree import BinaryTree
+from BinaryTree import BinaryTree
 
 
 class LinkedBinaryTree(BinaryTree):

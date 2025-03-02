@@ -1,4 +1,4 @@
-from Tree.AbstractTree import Tree
+from AbstractTree import Tree
 
 
 class BinaryTree(Tree):
