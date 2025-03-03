@@ -1,12 +1,12 @@
 from random import randrange
-from typing import List, Optional
+from typing import List
 
 from Map.MapBase import MapBase
 
 
 class HashMapBase(MapBase):
     def __init__(self, cap=11, p=109345121):
-        self.table: List[Optional[MapBase.Item]] = [None] * cap
+        self.table: List = [None] * cap
         self.n = 0
         self.prime = p
         self.scale = 1 + randrange(p - 1)
