@@ -1,8 +1,4 @@
-class Person:
-    _AVAIL = object()
-
-    def check(self):
-        return Person._AVAIL
+a = [None] * 10
 
 
-print(Person().check())
+print(len(a))
