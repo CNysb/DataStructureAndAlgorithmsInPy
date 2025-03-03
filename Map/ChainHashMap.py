@@ -1,4 +1,3 @@
-import builtins
 from Map.HashMapBase import HashMapBase
 from Map.UnsortedTableMap import UnsortedTableMap
 
@@ -16,3 +15,16 @@ class ChainHashMap(HashMapBase):
         bucket = self.table[j]
         if bucket is None:
             raise Exception("key error ")
+        return bucket[k]
+
+    def bucket_delitem(self, j, k):
+        bucket = self.table[j]
+        if bucket is None:
+            raise Exception("key error ")
+        del bucket[k]
+
+    def __iter__(self):
+        for bucket in self.table:
+            if bucket is not None:
+                for key in bucket:
+                    yield key

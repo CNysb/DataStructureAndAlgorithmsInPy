@@ -29,7 +29,7 @@ class HashMapBase(MapBase):
 
     def __delitem__(self, k):
         j = self.hash_function(k)
-        self.bucket_delitem(j)
+        self.bucket_delitem(j, k)
         self.n -= 1
 
     def resize(self, c):
@@ -39,7 +39,7 @@ class HashMapBase(MapBase):
         for k, v in old:
             self[k] = v
 
-    def bucket_delitem(self, k):
+    def bucket_delitem(self, j, k):
         pass
 
     def bucket_setitem(self, j, k, v):
