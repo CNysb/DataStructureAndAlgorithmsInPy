@@ -149,10 +149,42 @@ class TreeMap(LinkedBinaryTree, MapBase):
     def _rebalance_access(self, p):
         pass
 
+    def _relink(self, parent, child, make_left_child):
+        if make_left_child:
+            parent.left = child
+        else:
+            parent.right = child
+        if child is not None:
+            child.parent = parent
 
+    def _rotate(self, p):
+        x = p.node
+        y = p.parent
+        z = p.parent
+        
+        if z is None:
+            self.root = x
+            x.parent = None
+        else:
+            self._relink(z, x, y==z.left)
 
+        if x == y.left:
+            self._relink(y, x.right, True)
+            self._relink(x, y, False)
+        else:
+            self._relink(y, x.left, False)
+            self._relink(x, y, True)
 
+    def _restructure(self, x):
+        y = self.parent(x)
+        z = self.parent(y)
 
+        if (x == self.right(y)) is (y == self.right(z)):
+            self._rotate(y)
+            return y
+        else:
+            self._rotate(x)
+            return x
 
     class Position(LinkedBinaryTree.Position):
         @property
